@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".reflection.ReflectionStudyActivity"/>
+        <activity android:name=".nestedscroll.MyNestedScrollActivity"/>
     </application>
 
 

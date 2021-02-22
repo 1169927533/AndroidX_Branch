@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import com.example.androidx_branch.nestedscroll.MyNestedScrollActivity
 import com.example.androidx_branch.reflection.ReflectionStudyActivity
 import com.example.androidx_branch.reflection.annotion.EnumAnnotation
 import com.example.androidx_branch.reflection.annotion.InjectIdToView
@@ -35,10 +36,14 @@ class MainActivity : BaseActivity() {
             injtent.putExtra("information", "通过反射的方式获取activity的传值")
             val checkList = ArrayList<String>()
             checkList.add("数组")
-            var intArray = intArrayOf(1,2,3)
+            var intArray = intArrayOf(1, 2, 3)
             injtent.putExtra("list", checkList);
-            injtent.putExtra("intlist",intArray)
+            injtent.putExtra("intlist", intArray)
             startActivity(injtent)
+        }
+
+        btn_nestedscroll.setOnClickListener {
+            startActivity<MyNestedScrollActivity>(this)
         }
     }
 
