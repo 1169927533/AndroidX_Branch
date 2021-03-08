@@ -40,4 +40,9 @@ dependencies {
     implementation 'com.github.1169927533.BaseMavenProject:baseYu:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'com.zhy:base-adapter:2.0.0'
+
+    //拼音库
+    implementation 'com.github.promeg:tinypinyin:2.0.3' // TinyPinyin核心包，约80KB
+    //basqqiucladapter
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
 }

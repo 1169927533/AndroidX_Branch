@@ -39,6 +39,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="嵌套滑动" />
+
+
+            <Button
+                android:id="@+id/btn_tel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="联系人" />
+
+            <Button
+                android:id="@+id/btn_fulldialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="全屏的dialog" />
+
+            <Button
+                android:id="@+id/btn_weixing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="仿照微信我的界面" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

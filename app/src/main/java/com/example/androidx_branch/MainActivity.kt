@@ -4,11 +4,16 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import com.example.androidx_branch.fulldialog.DemoDialogFragment
+import com.example.androidx_branch.fulldialog.DialogActivity
+import com.example.androidx_branch.lianxiren.ActivityA
+import com.example.androidx_branch.lianxiren.TelActivity
 import com.example.androidx_branch.nestedscroll.MyNestedScrollActivity
 import com.example.androidx_branch.reflection.ReflectionStudyActivity
 import com.example.androidx_branch.reflection.annotion.EnumAnnotation
 import com.example.androidx_branch.reflection.annotion.InjectIdToView
 import com.example.androidx_branch.reflection.util.InjectUtil
+import com.example.androidx_branch.weixing.WeiXingActivity
 import com.uppack.lksmall.baseyu.BarUtils
 import com.uppack.lksmall.baseyu.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -45,6 +50,16 @@ class MainActivity : BaseActivity() {
         btn_nestedscroll.setOnClickListener {
             startActivity<MyNestedScrollActivity>(this)
         }
+
+        btn_tel.setOnClickListener {
+            startActivity<ActivityA>(this)
+        }
+
+        btn_fulldialog.setOnClickListener {
+            startActivity<DialogActivity>(this)
+        }
+
+        btn_weixing.setOnClickListener { startActivity<WeiXingActivity>(this) }
     }
 
     override fun initViewData() {
