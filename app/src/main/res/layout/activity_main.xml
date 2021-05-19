@@ -17,6 +17,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -30,7 +31,7 @@
 
             <Button
                 android:id="@+id/btn_reflection"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="利用反射获取intent转递的值" />
 
@@ -58,6 +59,85 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="仿照微信我的界面" />
+
+            <Button
+                android:id="@+id/btn_processbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="进度条" />
+
+            <Button
+                android:id="@+id/btn_viewscale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="将view在给定距离里缩放到指定大小" />
+
+
+            <Button
+                android:id="@+id/btn_danmu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="弹幕" />
+
+            <Button
+                android:id="@+id/btn_spann"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="spann" />
+
+            <Button
+                android:id="@+id/btn_stock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="股票" />
+
+            <Button
+                android:id="@+id/btn_surface"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="surfaceView学习" />
+
+            <Button
+                android:id="@+id/btn_error"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="一个错误的dialog" />
+
+            <Button
+                android:id="@+id/btn_picture"
+                android:text="拍照"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/btn_getpicture"
+                android:text="获取相册并裁剪"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/btn_storage"
+                android:text="Android存储学习"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/btn_nettime"
+                android:text="获取网站时间"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/btn_netstudy"
+                android:text="分装网络库"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <ImageView
+        android:id="@+id/intimacy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/live_group_img_close"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_main" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

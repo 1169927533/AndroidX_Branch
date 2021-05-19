@@ -18,6 +18,5 @@ class DemoDialogFragment:BaseDialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.dialog_fragment_demo, container, false)
-
     }
 }

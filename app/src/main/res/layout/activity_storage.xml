@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="访问持久性文件" />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_inFIleDir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="filesDir" />
+    <Button
+        android:id="@+id/btn_incacheDir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="cacheDir" />
+    <Button
+        android:id="@+id/btn_exFIleDir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="getExternalFilesDir()" />
+
+    <Button
+        android:id="@+id/btn_exCacheDir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="externalCacheDir" />
+
+    <Button
+        android:text="获取内部存储文件"
+        android:id="@+id/btn_getstorage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <Button
+        android:id="@+id/btn_getwebtime"
+        android:text="获取网站时间"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

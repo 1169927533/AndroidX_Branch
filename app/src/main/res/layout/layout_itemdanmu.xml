@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="204dp"
+    android:layout_height="24dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/live_near_love_s">
+
+    <TextView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="42dp"
+        android:id="@+id/tv_yonghu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="叨叨的木马牛 进入直播间"
+        android:textColor="#ffffffff"
+        android:textSize="11dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

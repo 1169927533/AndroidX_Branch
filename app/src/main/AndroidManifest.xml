@@ -2,18 +2,34 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.androidx_branch">
-    <uses-sdk tools:overrideLibrary="com.zhpan.library:bannerview"/>
+
+    <uses-sdk tools:overrideLibrary="com.zhpan.library:bannerview" />
+
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <application
-        android:usesCleartextTraffic="true"
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="false"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AndroidX_Branch">
+        android:theme="@style/Theme.AndroidX_Branch"
+        android:usesCleartextTraffic="true">
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.androidx_branch.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,12 +37,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".reflection.ReflectionStudyActivity"/>
-        <activity android:name=".nestedscroll.MyNestedScrollActivity"/>
-        <activity android:name=".lianxiren.TelActivity"/>
-        <activity android:name=".lianxiren.ActivityA"/>
-        <activity android:name=".fulldialog.DialogActivity"/>
-        <activity android:name=".weixing.WeiXingActivity"/>
+        <activity android:name=".reflection.ReflectionStudyActivity" />
+        <activity android:name=".nestedscroll.MyNestedScrollActivity" />
+        <activity android:name=".lianxiren.TelActivity" />
+        <activity android:name=".lianxiren.ActivityA" />
+        <activity android:name=".fulldialog.DialogActivity" />
+        <activity android:name=".weixing.WeiXingActivity" />
+        <activity android:name=".process.ProcessBarActivity"></activity>
+        <activity android:name=".animal.ScaleActivity" />
+        <activity android:name=".danmu.DanMuActivity" />
+        <activity android:name=".spann.SpannActivity" />
+        <activity android:name=".stock.StockActivity" />
+        <activity android:name=".mysurfaceview.MySurfaceViewStudy" />
+        <activity android:name=".一个错误展示.FragmentStudy" />
+        <activity android:name=".takepicture.TakePictureActivity" />
+        <activity android:name=".takepicture.GetPictureActivity" />
+        <activity android:name=".storage.StorageActivity" />
+        <activity android:name=".net.NetWorkActivity"/>
     </application>
 
 

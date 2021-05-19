@@ -38,15 +38,18 @@ class HorizalLayoutManager : RecyclerView.LayoutManager() {
                 var childView = recycler.getViewForPosition(i)
                 addView(childView)
                 measureChildWithMargins(childView, 0, 0)
-                var left = i * childView.measuredWidth / 2
+                var left = ((itemCount)*(childView.measuredWidth/2)+childView.measuredWidth/2) - (i+1) * childView.measuredWidth / 2 -childView.measuredWidth
                 var top = 0
                 var right = left + childView.measuredWidth
                 var bottom = height
                 layoutDecoratedWithMargins(childView, left, top, right, bottom)
-                if (childView.right > width) {
+               /* if (childView.right > width) {
+                    break
+                }*/
+                i++
+                if(i>=itemCount){
                     break
                 }
-                i++
             }
         }
     }

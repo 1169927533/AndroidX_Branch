@@ -1,5 +1,6 @@
 package com.example.androidx_branch.reflection
 
+import android.util.Log
 import android.widget.Toast
 import com.example.androidx_branch.R
 import com.example.androidx_branch.reflection.annotion.InjectValueToView
@@ -31,6 +32,7 @@ class ReflectionStudyActivity:BaseActivity(){
     override fun initView() {
         InjectUtil.injectIntentValue(this@ReflectionStudyActivity)
         Toast.makeText(this, "$namew   $informationw    ${list.size}   ${intlist.size}", Toast.LENGTH_SHORT).show()
+        Log.i("zjc","ReflectionStudyActivity:${window.windowManager.hashCode()}")
 
     }
 

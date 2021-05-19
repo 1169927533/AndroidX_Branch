@@ -2,12 +2,17 @@ package com.example.androidx_branch.lianxiren
 
 import android.content.Intent
 import android.util.Log
+import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidx_branch.R
+import com.example.androidx_branch.lianxiren.adapter.CardAdapter
 import com.example.androidx_branch.lianxiren.liebiao.HorizalAdapter
 import com.example.androidx_branch.lianxiren.liebiao.HorizalLayoutManager
+import com.example.androidx_branch.lianxiren.sortlist.LeftFlowLayoutManger
+import com.example.androidx_branch.lianxiren.sortlist.SSTwo
 import com.example.androidx_branch.lianxiren.sortlist.TelBean
 import com.uppack.lksmall.baseyu.BaseActivity
+import com.uppack.lksmall.baseyu.weight.util.ViewUtil
 import kotlinx.android.synthetic.main.activity_a.*
 
 /**
@@ -29,6 +34,7 @@ class ActivityA : BaseActivity() {
 
     override fun initViewData() {
         initRecycleView()
+      //  initRecycleView_Card()
     }
 
     private fun initRecycleView() {
@@ -64,7 +70,7 @@ class ActivityA : BaseActivity() {
         re_head.adapter = HorizalAdapter(d)
 
 
-        re_head.addOnScrollListener(object:RecyclerView.OnScrollListener(){
+        re_head.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 //显示区域的高度
@@ -73,7 +79,7 @@ class ActivityA : BaseActivity() {
                 var range = re_head.computeHorizontalScrollRange()
                 //滚动的距离
                 var offset = re_head.computeHorizontalScrollOffset()
-                Log.i("zjc","extent = ${extent} range = $range offset = $offset")
+                Log.i("zjc", "extent = ${extent} range = $range offset = $offset")
             }
         })
     }
@@ -95,5 +101,22 @@ class ActivityA : BaseActivity() {
 
             }
         }
+    }
+
+    private fun initRecycleView_Card() {
+        var la = SSTwo(this)
+        btn_stop.setOnClickListener {
+            la.method = false
+        }
+        var d = ArrayList<Int>()
+        d.add(R.drawable.three)
+        d.add(R.drawable.two)
+        d.add(R.drawable.one)
+        d.add(R.drawable.four)
+        var cardAdapter = CardAdapter(d)
+        recycleview_card.adapter = cardAdapter
+        recycleview_card.layoutManager = la
+
+        //  PagerSnapHelper().attachToRecyclerView(recycleview_card)
     }
 }
