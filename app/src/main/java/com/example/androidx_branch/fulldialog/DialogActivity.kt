@@ -3,6 +3,7 @@ package com.example.androidx_branch.fulldialog
 import com.example.androidx_branch.R
 import com.uppack.lksmall.baseyu.BaseActivity
 import kotlinx.android.synthetic.main.activity_dialog.*
+import java.util.*
 
 /**
  * @Author Yu
@@ -17,7 +18,13 @@ class DialogActivity : BaseActivity() {
     override fun initView() {
         btn_demo_dialog.setOnClickListener {
             var demoDialogFragment = DemoDialogFragment()
-            demoDialogFragment.show(supportFragmentManager,"demodialog")
+            demoDialogFragment.show(supportFragmentManager, "demodialog")
+        }
+        btn_s.setOnClickListener {
+            tv_s.text = String.format(resources.getString(R.string.ss), "我是s");
+        }
+        btn_d.setOnClickListener {
+            tv_s.text = String.format("%d", 112121);
         }
     }
 

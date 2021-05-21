@@ -54,6 +54,8 @@
         <activity android:name=".takepicture.GetPictureActivity" />
         <activity android:name=".storage.StorageActivity" />
         <activity android:name=".net.NetWorkActivity"/>
+        <activity android:name=".crop.CropPictureActivity"/>
+        <activity android:name=".crop.TestActivity"/>
     </application>
 
 

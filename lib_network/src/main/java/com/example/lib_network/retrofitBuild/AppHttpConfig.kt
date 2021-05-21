@@ -3,6 +3,7 @@ package com.example.lib_network.retrofitBuild
 import android.util.Log
 import com.example.lib_network.IRetrofitConfig
 import com.example.lib_network.converterfactory.CustomGsonConverterFactory
+import com.example.lib_network.converterfactory.CustomLogInterceptor
 import com.example.lib_network.converterfactory.ResponseConverterFactory
 import com.google.gson.Gson
 import okhttp3.OkHttpClient
@@ -34,7 +35,7 @@ open class AppHttpConfig : IRetrofitConfig {
     override fun client(): OkHttpClient {
         var okHttpClientBuilder = OkHttpClient.Builder()
         //  okHttpClientBuilder.addInterceptor(MainInterceptor())
-        //  okHttpClientBuilder.addNetworkInterceptor(RenovaceLogInterceptor())
+        okHttpClientBuilder.addNetworkInterceptor(CustomLogInterceptor())
         clientToOut(okHttpClientBuilder)
         // okHttpClientBuilder.addInterceptor(CacheInterceptor())
         // okHttpClientBuilder.cache(HttpCache.getCache(cachePath()))
@@ -46,7 +47,7 @@ open class AppHttpConfig : IRetrofitConfig {
         var loggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger() {
             Log.e("yunet", it)
         });
-        loggingInterceptor.setLevel(level);
+        loggingInterceptor.level = level;
         okHttpClientBuilder.addInterceptor(loggingInterceptor)
         return okHttpClientBuilder.build()
     }

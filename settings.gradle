@@ -1,3 +1,4 @@
+include ':MyCropBitmap'
 include ':lib_network'
 include ':compiler'
 include ':app'

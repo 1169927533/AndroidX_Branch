@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.ViewTreeObserver
 import android.widget.TextView
 import com.example.androidx_branch.animal.ScaleActivity
+import com.example.androidx_branch.crop.CropPictureActivity
 import com.example.androidx_branch.danmu.DanMuActivity
 import com.example.androidx_branch.fulldialog.DialogActivity
 import com.example.androidx_branch.lianxiren.ActivityA
@@ -90,6 +91,7 @@ class MainActivity : BaseActivity() {
         btn_storage.setOnClickListener { startActivity<StorageActivity>(this) }
         btn_nettime.setOnClickListener { startActivity<StorageActivity>(this) }
         btn_netstudy.setOnClickListener { startActivity<NetWorkActivity>(this) }
+        btn_crop.setOnClickListener { startActivity<CropPictureActivity>(this) }
     }
 
 

@@ -80,6 +80,8 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
     //接入网络库
     implementation project(":lib_network")
+    //图片裁剪
+    implementation project(":MyCropBitmap")
     //拼音库
     implementation 'com.github.promeg:tinypinyin:2.0.3' // TinyPinyin核心包，约80KB
     //basqqiucladapter

@@ -1,14 +1,14 @@
 package com.example.lib_network.converterfactory
 
 import android.util.Log
+import com.alibaba.fastjson.util.ParameterizedTypeImpl
 import com.example.lib_network.bean.HttpResponseMsg
 import com.google.gson.Gson
-import com.google.gson.JsonArray
-import com.google.gson.JsonParser
 import com.google.gson.reflect.TypeToken
 import okhttp3.ResponseBody
 import retrofit2.Converter
 import java.lang.reflect.Type
+import java.util.EnumSet.of
 
 /**
  * @Author Yu
@@ -17,7 +17,7 @@ import java.lang.reflect.Type
  */
 class ResponseConverterFactory<T> : Converter<ResponseBody, T> {
     lateinit var gson: Gson
-    lateinit var type: Type
+    var type: Type
     lateinit var annotations: Array<Annotation>
 
     constructor(gson: Gson, type: Type, annotations: Array<Annotation>) {
@@ -28,12 +28,18 @@ class ResponseConverterFactory<T> : Converter<ResponseBody, T> {
 
     override fun convert(value: ResponseBody): T? {
         val response = value.string()
-        Log.i("yuNet", "请求结果json：${response}")
-        val baseBean = gson.fromJson<HttpResponseMsg<T>>(
-            response,
-            object : TypeToken<HttpResponseMsg<T>>() {}.type
+        Log.e("yuNet", "请求结果json：${response}")
+        //通过反射获得泛型的参数化类型
+        val p = ParameterizedTypeImpl(
+            arrayOf(type),
+            HttpResponseMsg::class.java,
+            HttpResponseMsg::class.java
         )
+        val baseBean: HttpResponseMsg<T> = gson.fromJson(response, p)
+
         return baseBean.data
     }
+
+
 
 }
