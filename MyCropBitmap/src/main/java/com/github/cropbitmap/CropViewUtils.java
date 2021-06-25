@@ -319,7 +319,7 @@ public class CropViewUtils {
          * 第一次解析时，inJustDecodeBounds设置为true，
          * 禁止为bitmap分配内存，虽然bitmap返回值为空，但可以获取图片大小
          */
-        options.inJustDecodeBounds = true;
+        options.inJustDecodeBounds = true;//这个设置只为了获取图片得宽高 不加载图片内存
         BitmapFactory.decodeResource(context.getResources(), resId, options);
 
 //        final int height = options.outHeight;
@@ -329,7 +329,7 @@ public class CropViewUtils {
             int widthRatio = (int) Math.floor((float) width / (float) reqWidth);
             inSampleSize = widthRatio;
         }
-        options.inSampleSize = inSampleSize;
+        options.inSampleSize = inSampleSize;//图片采样率 //可以减少图片得大小
         // 使用计算得到的inSampleSize值再次解析图片
         options.inJustDecodeBounds = false;
         return scaleBitmapForWidth(BitmapFactory.decodeResource(context.getResources(), resId, options), reqWidth);

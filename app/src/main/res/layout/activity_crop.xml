@@ -7,12 +7,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <Button
+        android:layout_marginTop="30dp"
+        android:id="@+id/btn_getpicture"
+        android:text="获取相册图片"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
     <com.github.cropbitmap.LikeQQCropView
         android:id="@+id/likeView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@color/white"
+        app:bgColor="#00000000"
         />
 
     <SeekBar

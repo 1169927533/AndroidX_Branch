@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:background="@drawable/bird"
+    android:layout_height="100dp">
+<TextView
+    android:id="@+id/sda"
+    android:text="dsadasdasdas"
+    android:textColor="@color/white"
+    android:layout_width="100dp"
+    android:layout_height="100dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

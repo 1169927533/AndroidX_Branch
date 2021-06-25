@@ -2,6 +2,7 @@ package com.example.androidx_branch.lianxiren
 
 import android.content.Intent
 import android.util.Log
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidx_branch.R
@@ -29,12 +30,12 @@ class ActivityA : BaseActivity() {
         btn.setOnClickListener {
             startActivityForResult(Intent(this@ActivityA, TelActivity::class.java), 10)
         }
-
+        tv_author_name.text = "hahahahhah我哈哈和消息是了撒大将军府你得赴南非按摩手法按双方开始奥斯曼发送阿斯弗阿斯弗撒发顺丰萨法发送"
     }
 
     override fun initViewData() {
         initRecycleView()
-      //  initRecycleView_Card()
+        initRecycleView_Card()
     }
 
     private fun initRecycleView() {
@@ -105,6 +106,7 @@ class ActivityA : BaseActivity() {
 
     private fun initRecycleView_Card() {
         var la = SSTwo(this)
+        var linearLayoutManager = LinearLayoutManager(this)
         btn_stop.setOnClickListener {
             la.method = false
         }
@@ -115,7 +117,7 @@ class ActivityA : BaseActivity() {
         d.add(R.drawable.four)
         var cardAdapter = CardAdapter(d)
         recycleview_card.adapter = cardAdapter
-        recycleview_card.layoutManager = la
+        recycleview_card.layoutManager = linearLayoutManager
 
         //  PagerSnapHelper().attachToRecyclerView(recycleview_card)
     }

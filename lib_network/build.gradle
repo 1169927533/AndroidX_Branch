@@ -46,4 +46,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.7.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.12.2'//
     implementation 'com.alibaba:fastjson:1.2.61'
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1"
+
+    debugImplementation "com.readystatesoftware.chuck:library:1.1.0"
+    releaseCompile "com.readystatesoftware.chuck:library-no-op:1.1.0"
 }

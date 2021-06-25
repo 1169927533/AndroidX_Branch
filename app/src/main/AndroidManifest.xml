@@ -5,6 +5,8 @@
 
     <uses-sdk tools:overrideLibrary="com.zhpan.library:bannerview" />
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -12,6 +14,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".application.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -56,6 +59,22 @@
         <activity android:name=".net.NetWorkActivity"/>
         <activity android:name=".crop.CropPictureActivity"/>
         <activity android:name=".crop.TestActivity"/>
+        <activity android:name=".scene.SceneActivity"/>
+        <activity android:name=".cache.CacheActivity"/>
+        <activity android:name=".gradully.PictureGraduallyActivity"/>
+        <activity android:name=".presents.PresentsActivity"/>
+        <activity android:name=".scrollerpicker.ScrollerPickerActivity"/>
+        <activity android:name=".scrollerpicker.sample1.SampleActivity1">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".scrollerpicker.sample2.SampleActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
     </application>
 
 

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.example.androidx_branch.presents.view.GiftSurfaceView
+        android:id="@+id/surfaceViewGift"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/btnInit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="初始化礼物轨道"
+        app:layout_constraintTop_toBottomOf="@+id/surfaceViewGift" />
+    <EditText
+        android:hint="输入内容"
+        app:layout_constraintTop_toBottomOf="@+id/btnInit"
+        android:id="@+id/ed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/btnSend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="送礼物"
+        app:layout_constraintTop_toBottomOf="@+id/ed" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,7 +15,7 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -71,6 +71,7 @@ android {
 
 }
 dependencies {
+    implementation 'com.android.support:multidex:1.0.3'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation depend.constraintlayout()
@@ -82,6 +83,8 @@ dependencies {
     implementation project(":lib_network")
     //图片裁剪
     implementation project(":MyCropBitmap")
+    // im
+    implementation project(":moduleIm")
     //拼音库
     implementation 'com.github.promeg:tinypinyin:2.0.3' // TinyPinyin核心包，约80KB
     //basqqiucladapter
@@ -124,4 +127,8 @@ dependencies {
 
     // optional - Test helpers for LiveData
     testImplementation "androidx.arch.core:core-testing:$arch_version"
+
+    // 播放svga动画
+    implementation 'com.github.yyued:SVGAPlayer-Android:2.5.11'
+
 }

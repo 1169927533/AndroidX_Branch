@@ -46,7 +46,7 @@
                 android:id="@+id/btn_tel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="联系人" />
+                android:text="联系人/跳动得view" />
 
             <Button
                 android:id="@+id/btn_fulldialog"
@@ -131,6 +131,34 @@
             <Button
                 android:id="@+id/btn_crop"
                 android:text="图片裁剪"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/btn_scene"
+                android:text="场景转换"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/btn_cache"
+                android:text="SVGA使用"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/btn_picturegradlly"
+                android:text="图片一点点替换"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:visibility="gone"
+                android:id="@+id/btn_presents"
+                android:text="礼物"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/btn_picker"
+                android:text="自定义选择器"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>

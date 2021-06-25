@@ -1,17 +1,27 @@
 package com.example.androidx_branch.crop
 
+import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.net.Uri
+import android.os.ParcelFileDescriptor
+import android.provider.MediaStore
 import android.widget.SeekBar
 import com.example.androidx_branch.R
+import com.example.androidx_branch.takepicture.Util
 import com.uppack.lksmall.baseyu.BaseActivity
 import kotlinx.android.synthetic.main.activity_crop.*
+import kotlinx.android.synthetic.main.activity_crop.btn_getpicture
+import kotlinx.android.synthetic.main.activity_get.*
+import java.io.FileDescriptor
 
 /**
  * @Author Yu
  * @Date 2021/5/21 8:30
- * @Description TODO
+ * @Description 图片裁剪 写的真的牛逼
  */
-class CropPictureActivity:BaseActivity() {
+class CropPictureActivity : BaseActivity() {
 
     override fun getLayoutId(): Int {
         return R.layout.activity_crop
@@ -26,10 +36,14 @@ class CropPictureActivity:BaseActivity() {
         //推荐使用setBitmapForWidth()
         //setBitmapForScale()
         //setBitmap(多参)
+        btn_getpicture.setOnClickListener {
+            var intent = Intent(Intent.ACTION_PICK, null);
+            intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+            startActivityForResult(intent, 2);
+        }
 
 
-        likeView.setBitmapForWidth(R.drawable.bird, 1080)
-        sb.setOnSeekBarChangeListener(object:SeekBar.OnSeekBarChangeListener{
+        sb.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 //动态改变裁剪框圆角
                 val cropWidth = likeView.clipWidth / 2
@@ -73,4 +87,35 @@ class CropPictureActivity:BaseActivity() {
 
     override fun observeLiveData() {
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (requestCode) {
+            2 -> {
+                // 得到图片的全路径
+                val uri: Uri? = data?.getData()
+
+
+                likeView.bitmap =    getBitmapFromUri(this, uri!!)
+            }
+        }
+    }
+
+    fun getBitmapFromUri(
+        context: Context,
+        uri: Uri?
+    ): Bitmap? {
+        try {
+            val parcelFileDescriptor: ParcelFileDescriptor? =
+                context.contentResolver.openFileDescriptor(uri!!, "r")
+            val fileDescriptor: FileDescriptor = parcelFileDescriptor!!.getFileDescriptor()
+            val image: Bitmap = BitmapFactory.decodeFileDescriptor(fileDescriptor)
+            parcelFileDescriptor!!.close()
+            return image
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return null
+    }
+
 }

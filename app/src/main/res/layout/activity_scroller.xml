@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+     >
+
+    <TextView
+        android:id="@+id/default_scroll_picker_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white"
+        android:text="默认滚动选择器" />
+
+    <TextView
+        android:id="@+id/custom_scroll_picker_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:padding="@dimen/dp_10"
+        android:textColor="@android:color/white"
+        android:background="@color/colorPrimary"
+        android:text="自定义滚动选择器" />
+
+</LinearLayout>

@@ -12,4 +12,28 @@
         android:text="进行网络请求"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/btn_post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="post"
+        app:layout_constraintTop_toBottomOf="@+id/btn_getnet" />
+
+    <Button
+        android:id="@+id/btn_download"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="下载文件"
+        app:layout_constraintTop_toBottomOf="@+id/btn_post" />
+    <Button
+        android:id="@+id/btn_flow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Flow学习"
+        app:layout_constraintTop_toBottomOf="@+id/btn_download" />
+    <ImageView
+        android:id="@+id/imgCallback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,8 +3,11 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.7">
       <module name="AndroidX_Branch.app" target="1.8" />
+      <module name="AndroidX_Branch.aspectj" target="1.8" />
       <module name="AndroidX_Branch.lib_network" target="1.8" />
+      <module name="AndroidX_Branch.moduleIm" target="1.8" />
       <module name="AndroidX_Branch.MyCropBitmap" target="1.8" />
+      <module name="AndroidX_Branch.mylibrary" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

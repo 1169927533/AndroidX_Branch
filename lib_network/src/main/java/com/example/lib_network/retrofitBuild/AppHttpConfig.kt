@@ -5,7 +5,9 @@ import com.example.lib_network.IRetrofitConfig
 import com.example.lib_network.converterfactory.CustomGsonConverterFactory
 import com.example.lib_network.converterfactory.CustomLogInterceptor
 import com.example.lib_network.converterfactory.ResponseConverterFactory
+import com.example.lib_network.util.AppCache
 import com.google.gson.Gson
+import com.readystatesoftware.chuck.ChuckInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -23,8 +25,8 @@ open class AppHttpConfig : IRetrofitConfig {
     override fun build(builder: Retrofit.Builder?) {
         builder!!.client(client())
         builder.baseUrl("https://wanandroid.com/")
-        builder.addConverterFactory(CustomGsonConverterFactory())
-        builder.addConverterFactory(GsonConverterFactory.create(Gson()))
+         builder.addConverterFactory(CustomGsonConverterFactory())
+         builder.addConverterFactory(GsonConverterFactory.create(Gson()))
         //builder.addCallAdapterFactory(ThreadCallAdapterFactory)  rxjava适配器
     }
 
@@ -37,6 +39,7 @@ open class AppHttpConfig : IRetrofitConfig {
         //  okHttpClientBuilder.addInterceptor(MainInterceptor())
         okHttpClientBuilder.addNetworkInterceptor(CustomLogInterceptor())
         clientToOut(okHttpClientBuilder)
+        okHttpClientBuilder.addInterceptor(ChuckInterceptor(AppCache.getContext()))
         // okHttpClientBuilder.addInterceptor(CacheInterceptor())
         // okHttpClientBuilder.cache(HttpCache.getCache(cachePath()))
         okHttpClientBuilder.retryOnConnectionFailure(true)

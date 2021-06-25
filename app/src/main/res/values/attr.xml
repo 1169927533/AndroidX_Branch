@@ -3,4 +3,7 @@
     <declare-styleable name="processBarView">
         <attr name="processvalue" format="integer" />
     </declare-styleable>
+    <declare-styleable name="PercentTextView">
+        <attr name="baseScreenHeight" format="integer" />
+    </declare-styleable>
 </resources>

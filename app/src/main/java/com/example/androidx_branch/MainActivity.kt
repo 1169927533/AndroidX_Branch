@@ -1,22 +1,33 @@
 package com.example.androidx_branch
 
+import android.content.Context
 import android.content.Intent
+import android.util.AttributeSet
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.ScaleGestureDetector
+import android.view.View
 import android.view.ViewTreeObserver
 import android.widget.TextView
+import androidx.core.view.LayoutInflaterCompat
 import com.example.androidx_branch.animal.ScaleActivity
+import com.example.androidx_branch.cache.CacheActivity
 import com.example.androidx_branch.crop.CropPictureActivity
 import com.example.androidx_branch.danmu.DanMuActivity
 import com.example.androidx_branch.fulldialog.DialogActivity
+import com.example.androidx_branch.gradully.PictureGraduallyActivity
 import com.example.androidx_branch.lianxiren.ActivityA
 import com.example.androidx_branch.mysurfaceview.MySurfaceViewStudy
 import com.example.androidx_branch.nestedscroll.MyNestedScrollActivity
 import com.example.androidx_branch.net.NetWorkActivity
+import com.example.androidx_branch.presents.PresentsActivity
 import com.example.androidx_branch.process.ProcessBarActivity
 import com.example.androidx_branch.reflection.ReflectionStudyActivity
 import com.example.androidx_branch.reflection.annotion.EnumAnnotation
 import com.example.androidx_branch.reflection.annotion.InjectIdToView
 import com.example.androidx_branch.reflection.util.InjectUtil
+import com.example.androidx_branch.scene.SceneActivity
+import com.example.androidx_branch.scrollerpicker.ScrollerPickerActivity
 import com.example.androidx_branch.spann.SpannActivity
 import com.example.androidx_branch.stock.StockActivity
 import com.example.androidx_branch.storage.StorageActivity
@@ -28,6 +39,7 @@ import com.example.androidx_branch.一个错误展示.FragmentStudy
 import com.uppack.lksmall.baseyu.BarUtils
 import com.uppack.lksmall.baseyu.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_surface.*
 
 
 class MainActivity : BaseActivity() {
@@ -52,7 +64,7 @@ class MainActivity : BaseActivity() {
         }
 
         btn_reflection.viewTreeObserver.addOnGlobalLayoutListener {
-           // btn_reflection.viewTreeObserver.removeOnGlobalLayoutListener(this@)
+            // btn_reflection.viewTreeObserver.removeOnGlobalLayoutListener(this@)
             //这里就可以获取他的高度了
         }
 
@@ -92,6 +104,11 @@ class MainActivity : BaseActivity() {
         btn_nettime.setOnClickListener { startActivity<StorageActivity>(this) }
         btn_netstudy.setOnClickListener { startActivity<NetWorkActivity>(this) }
         btn_crop.setOnClickListener { startActivity<CropPictureActivity>(this) }
+        btn_scene.setOnClickListener { startActivity<SceneActivity>(this) }
+        btn_cache.setOnClickListener { startActivity<CacheActivity>(this) }
+        btn_picturegradlly.setOnClickListener{ startActivity<PictureGraduallyActivity>(this) }
+        btn_presents.setOnClickListener { startActivity<PresentsActivity>(this) }
+        btn_picker.setOnClickListener { startActivity<ScrollerPickerActivity>(this) }
     }
 
 
@@ -112,5 +129,27 @@ class MainActivity : BaseActivity() {
     private fun intimacyAnimal() {
         intimacy.animate().translationY(-100f).alpha(0f).duration = 1000
 
+    }
+
+    private fun setFactory2() {
+        LayoutInflaterCompat.setFactory2(layoutInflater, object : LayoutInflater.Factory2 {
+            override fun onCreateView(
+                parent: View?,
+                name: String,
+                context: Context,
+                attrs: AttributeSet
+            ): View? {
+                var startTime = System.currentTimeMillis()
+                var view = delegate.createView(parent, name, context, attrs)
+                var endTime = System.currentTimeMillis()
+                var cost = endTime - startTime
+                Log.i("zjc", name + " cost " + cost + " ms")
+                return view
+            }
+
+            override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
+                return null
+            }
+        })
     }
 }

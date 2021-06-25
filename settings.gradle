@@ -3,3 +3,5 @@ include ':lib_network'
 include ':compiler'
 include ':app'
 rootProject.name = "AndroidX_Branch"
+include ':moduleIm'
+include ':aspectj'

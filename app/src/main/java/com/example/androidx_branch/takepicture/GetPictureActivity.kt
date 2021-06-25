@@ -2,20 +2,17 @@ package com.example.androidx_branch.takepicture
 
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.database.Cursor
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
-import android.os.Build
-import android.os.Environment
-import android.provider.DocumentsContract
+import android.os.Bundle
+import android.os.ParcelFileDescriptor
 import android.provider.MediaStore
-import android.util.Log
-import androidx.core.content.FileProvider
 import com.example.androidx_branch.R
 import com.uppack.lksmall.baseyu.BaseActivity
 import kotlinx.android.synthetic.main.activity_get.*
-import java.io.File
+import java.io.FileDescriptor
 
 
 /**
@@ -51,7 +48,7 @@ class GetPictureActivity : BaseActivity() {
             2 -> {
                 // 得到图片的全路径
                 val uri: Uri? = data?.getData()
-                img_content.setImageURI(uri)
+                img_content.setImageBitmap(getBitmapFromUri(this, uri!!))
             }
             111 -> {
                 //从相册选择
@@ -75,6 +72,23 @@ class GetPictureActivity : BaseActivity() {
         }
     }
 
+    fun getBitmapFromUri(
+        context: Context,
+        uri: Uri?
+    ): Bitmap? {
+        try {
+            val parcelFileDescriptor: ParcelFileDescriptor? =
+                context.contentResolver.openFileDescriptor(uri!!, "r")
+            val fileDescriptor: FileDescriptor = parcelFileDescriptor!!.getFileDescriptor()
+            val image: Bitmap = BitmapFactory.decodeFileDescriptor(fileDescriptor)
+            parcelFileDescriptor!!.close()
+            return image
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return null
+    }
+
     fun getPath(uri: Uri): String {
         //这里开始的第二部分，获取图片的路径：
         val imgPath =
@@ -90,7 +104,12 @@ class GetPictureActivity : BaseActivity() {
         return path
     }
 
-    fun getDataColumn(context: Context, contentUri: Uri?, selection: String?, selectionArgs: Array<String>?): String? {
+    fun getDataColumn(
+        context: Context,
+        contentUri: Uri?,
+        selection: String?,
+        selectionArgs: Array<String>?
+    ): String? {
         var contentResolver = context.contentResolver
         val mediaIdColumn = MediaStore.MediaColumns._ID
         val mimeTypeColumn = MediaStore.MediaColumns.MIME_TYPE
