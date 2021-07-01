@@ -161,6 +161,11 @@
                 android:text="自定义选择器"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/btnLightOperateView"
+                android:text="ViewGroup轻量级的添加删除view/获取手在屏幕上滑动的角度"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

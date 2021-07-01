@@ -17,6 +17,7 @@ import com.example.androidx_branch.danmu.DanMuActivity
 import com.example.androidx_branch.fulldialog.DialogActivity
 import com.example.androidx_branch.gradully.PictureGraduallyActivity
 import com.example.androidx_branch.lianxiren.ActivityA
+import com.example.androidx_branch.lighetoperate.LightOperateActivity
 import com.example.androidx_branch.mysurfaceview.MySurfaceViewStudy
 import com.example.androidx_branch.nestedscroll.MyNestedScrollActivity
 import com.example.androidx_branch.net.NetWorkActivity
@@ -109,6 +110,7 @@ class MainActivity : BaseActivity() {
         btn_picturegradlly.setOnClickListener{ startActivity<PictureGraduallyActivity>(this) }
         btn_presents.setOnClickListener { startActivity<PresentsActivity>(this) }
         btn_picker.setOnClickListener { startActivity<ScrollerPickerActivity>(this) }
+        btnLightOperateView.setOnClickListener { startActivity<LightOperateActivity>(this) }
     }
 
 
