@@ -46,12 +46,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/imgHead"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/avatar_rengwuxian"
+        app:layout_constraintBottom_toTopOf="@+id/getAnfleView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="控制器：获取角度，让view进行旋转的"
-        android:gravity="center"
         android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="控制器：获取角度，让view进行旋转的"
         app:layout_constraintBottom_toTopOf="@+id/getAnfleView" />
 
     <com.example.androidx_branch.lighetoperate.GetAngleView

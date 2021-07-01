@@ -2,10 +2,13 @@ package com.example.androidx_branch.lighetoperate
 
 import android.util.Log
 import android.view.View
+import android.view.animation.DecelerateInterpolator
+import android.widget.Scroller
 import android.widget.Toast
 import com.example.androidx_branch.R
 import com.uppack.lksmall.baseyu.BaseActivity
 import kotlinx.android.synthetic.main.activity_lightoperate.*
+import java.nio.channels.FileLock
 
 /**
  * @Author Yu
@@ -16,6 +19,7 @@ class LightOperateActivity : BaseActivity() {
     override fun getLayoutId(): Int {
         return R.layout.activity_lightoperate
     }
+
     private var mArcSlidingHelper: ArcSlidingHelper? = null
 
     override fun initView() {
@@ -24,8 +28,8 @@ class LightOperateActivity : BaseActivity() {
             mArcSlidingHelper = ArcSlidingHelper.create(
                 view1
             ) { angle ->
-                Log.i("zjc","${angle}")
-                view1.setRotation(view1.getRotation() + angle) }
+                view1.rotation = view1.rotation + angle
+            }
             //开启惯性滚动
             mArcSlidingHelper!!.enableInertialSliding(true)
             mArcSlidingHelper!!.setOnSlideFinishListener {
@@ -51,9 +55,15 @@ class LightOperateActivity : BaseActivity() {
         view4.setOnClickListener {
             moveToTop(it)
         }
-        getAnfleView.angleCallback = {
-            view2.rotation = it+view2.rotation
+        getAnfleView.post {
+            var centerPoint = arrayOfNulls<Float>(2)       //旋转中心点坐标
+            centerPoint[0] = getAnfleView.measuredWidth / 2f
+            centerPoint[1] = getAnfleView.measuredHeight / 2f
+            getAnfleView.initParams(AngleGetUtil(Scroller(this,DecelerateInterpolator()), centerPoint) {
+                imgHead.rotation = it + imgHead.rotation
+            })
         }
+
     }
 
     private fun moveToTop(target: View) {
