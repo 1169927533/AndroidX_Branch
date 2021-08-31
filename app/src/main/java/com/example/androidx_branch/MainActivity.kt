@@ -1,13 +1,15 @@
 package com.example.androidx_branch
 
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.Intent
 import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.ScaleGestureDetector
 import android.view.View
-import android.view.ViewTreeObserver
+import android.view.animation.Animation
+import android.view.animation.LinearInterpolator
+import android.view.animation.ScaleAnimation
 import android.widget.TextView
 import androidx.core.view.LayoutInflaterCompat
 import com.example.androidx_branch.animal.ScaleActivity
@@ -35,12 +37,17 @@ import com.example.androidx_branch.storage.StorageActivity
 import com.example.androidx_branch.takepicture.GetPictureActivity
 import com.example.androidx_branch.takepicture.TakePictureActivity
 import com.example.androidx_branch.weixing.WeiXingActivity
-import com.example.androidx_branch.一个错误展示.ErrorDialog
 import com.example.androidx_branch.一个错误展示.FragmentStudy
+import com.example.model_windscreen.WindScreenActivity
 import com.uppack.lksmall.baseyu.BarUtils
 import com.uppack.lksmall.baseyu.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_surface.*
+import kotlinx.android.synthetic.main.dialog_fragment_demo.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 class MainActivity : BaseActivity() {
@@ -62,6 +69,7 @@ class MainActivity : BaseActivity() {
 
         tvMain.setOnClickListener {
             intimacyAnimal()
+
         }
 
         btn_reflection.viewTreeObserver.addOnGlobalLayoutListener {
@@ -83,8 +91,17 @@ class MainActivity : BaseActivity() {
             injtent.putExtra("intlist", intArray)
             startActivity(injtent)
         }
-
-        btn_nestedscroll.setOnClickListener { startActivity<MyNestedScrollActivity>(this) }
+        btnDou.setOnClickListener {
+            GlobalScope.launch(Dispatchers.Main) {
+                while (true) {
+                    delay(1000)
+                    shakeAnimal()
+                }
+            }
+        }
+        btn_nestedscroll.setOnClickListener {
+            startActivity<MyNestedScrollActivity>(this)
+        }
         btn_tel.setOnClickListener { startActivity<ActivityA>(this) }
         btn_fulldialog.setOnClickListener { startActivity<DialogActivity>(this) }
         btn_weixing.setOnClickListener { startActivity<WeiXingActivity>(this) }
@@ -107,10 +124,19 @@ class MainActivity : BaseActivity() {
         btn_crop.setOnClickListener { startActivity<CropPictureActivity>(this) }
         btn_scene.setOnClickListener { startActivity<SceneActivity>(this) }
         btn_cache.setOnClickListener { startActivity<CacheActivity>(this) }
-        btn_picturegradlly.setOnClickListener{ startActivity<PictureGraduallyActivity>(this) }
+        btn_picturegradlly.setOnClickListener { startActivity<PictureGraduallyActivity>(this) }
         btn_presents.setOnClickListener { startActivity<PresentsActivity>(this) }
         btn_picker.setOnClickListener { startActivity<ScrollerPickerActivity>(this) }
         btnLightOperateView.setOnClickListener { startActivity<LightOperateActivity>(this) }
+        btnWindScreen.setOnClickListener { startActivity<WindScreenActivity>(this) }
+
+        btncontinuousAnimal.setOnClickListener {
+
+        }
+        tvMain.setOnClickListener {
+            scaleAnimator.start()
+        }
+
     }
 
 
@@ -131,6 +157,20 @@ class MainActivity : BaseActivity() {
     private fun intimacyAnimal() {
         intimacy.animate().translationY(-100f).alpha(0f).duration = 1000
 
+    }
+
+    var scaleAnimator = ScaleAnimation(
+        0f,
+        1f,
+        0f,
+        1f,
+        Animation.RELATIVE_TO_SELF,
+        0.5f,
+        Animation.RELATIVE_TO_SELF,
+        0.5f
+    ).apply {
+        duration = 1000
+        repeatCount = 4
     }
 
     private fun setFactory2() {
@@ -154,4 +194,35 @@ class MainActivity : BaseActivity() {
             }
         })
     }
+
+    private fun setAnimation() {
+        btn_danmu.setAnimation(scaleAnimator)
+    }
+
+    override fun onResume() {
+        super.onResume()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        setAnimation()
+    }
+
+    // 震动动画
+    private fun shakeAnimal() {
+        var shakeAnimal: ObjectAnimator? = null
+        if (shakeAnimal == null) {
+            shakeAnimal = ObjectAnimator.ofFloat(btn_spann, "rotation", 0f, 8f, 0f, 8f, 0f)
+            btn_spann.pivotX = btn_spann.measuredWidth.toFloat()
+            btn_spann.pivotY = btn_spann.measuredHeight.toFloat() / 2f
+            shakeAnimal!!.duration = 400
+            shakeAnimal!!.interpolator = LinearInterpolator()
+
+        }
+        if (!shakeAnimal!!.isRunning) {
+            shakeAnimal!!.start()
+        }
+    }
+
+
 }

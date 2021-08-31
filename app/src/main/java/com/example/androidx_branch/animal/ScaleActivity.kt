@@ -18,9 +18,10 @@ class ScaleActivity : BaseActivity() {
 
     override fun initView() {
         ssss.setOnClickListener {
-            var transla = TranslateAnimation(0f, 0f, 300f, 300f)
+          /*  var transla = TranslateAnimation(0f, 0f, 300f, 300f)
             transla.fillAfter = true
-            ddd.startAnimation(transla)
+            ddd.startAnimation(transla)*/
+            ddd.scaleToTargetLocation()
         }
 
     }

@@ -6,7 +6,9 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -25,8 +27,8 @@ public class MySurfaceView extends SurfaceView implements Runnable, SurfaceHolde
     private Paint paint;
     float m_cirlce_r = 10;
 
-    public MySurfaceView(Context context ) {
-        this(context,null);
+    public MySurfaceView(Context context) {
+        this(context, null);
     }
 
     public MySurfaceView(Context context, AttributeSet attrs) {
@@ -61,7 +63,7 @@ public class MySurfaceView extends SurfaceView implements Runnable, SurfaceHolde
         while (flag) {
             try {
                 synchronized (mHolder) {
-                    Thread.sleep(100);
+                    Thread.sleep(1000);
                     Draw();
                 }
             } catch (InterruptedException e) {
@@ -74,7 +76,7 @@ public class MySurfaceView extends SurfaceView implements Runnable, SurfaceHolde
         }
     }
 
-    private void Draw(){
+    private void Draw() {
         mCanvas = mHolder.lockCanvas();
         if(mCanvas!=null){
             Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -95,7 +97,6 @@ public class MySurfaceView extends SurfaceView implements Runnable, SurfaceHolde
                 }
             }
             mHolder.unlockCanvasAndPost(mCanvas);
-
         }
     }
 }

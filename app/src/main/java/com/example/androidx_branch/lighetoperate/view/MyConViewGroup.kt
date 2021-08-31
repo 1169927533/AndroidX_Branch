@@ -1,4 +1,4 @@
-package com.example.androidx_branch.lighetoperate
+package com.example.androidx_branch.lighetoperate.view
 
 import android.content.Context
 import android.util.AttributeSet

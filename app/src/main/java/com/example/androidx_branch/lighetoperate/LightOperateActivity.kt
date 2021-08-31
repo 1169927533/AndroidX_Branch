@@ -1,14 +1,19 @@
 package com.example.androidx_branch.lighetoperate
 
-import android.util.Log
 import android.view.View
 import android.view.animation.DecelerateInterpolator
 import android.widget.Scroller
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import com.example.androidx_branch.R
+import com.example.androidx_branch.lighetoperate.helper.AngleGetUtil
+import com.example.androidx_branch.lighetoperate.helper.ArcSlidingHelper
 import com.uppack.lksmall.baseyu.BaseActivity
 import kotlinx.android.synthetic.main.activity_lightoperate.*
-import java.nio.channels.FileLock
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlin.random.Random
+import kotlin.random.asJavaRandom
 
 /**
  * @Author Yu
@@ -59,9 +64,21 @@ class LightOperateActivity : BaseActivity() {
             var centerPoint = arrayOfNulls<Float>(2)       //旋转中心点坐标
             centerPoint[0] = getAnfleView.measuredWidth / 2f
             centerPoint[1] = getAnfleView.measuredHeight / 2f
-            getAnfleView.initParams(AngleGetUtil(Scroller(this,DecelerateInterpolator()), centerPoint) {
-                imgHead.rotation = it + imgHead.rotation
-            })
+            getAnfleView.initParams(
+                AngleGetUtil(
+                    Scroller(this, DecelerateInterpolator()),
+                    centerPoint
+                ) {
+                    imgHead.rotation = it + imgHead.rotation
+                })
+        }
+        litePager.post {
+            lifecycleScope.launch {
+                while (true) {
+                    delay(2000)
+                    litePager.setSelection(0)
+                }
+            }
         }
 
     }

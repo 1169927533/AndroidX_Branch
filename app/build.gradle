@@ -56,7 +56,9 @@ android {
         jvmTarget = '1.8'
     }
 
-
+    buildFeatures {
+        dataBinding true
+    }
   /*  //这里是要输入的路径
     android.applicationVariants.all { variant ->
         variant.outputs.all {
@@ -85,6 +87,8 @@ dependencies {
     implementation project(":MyCropBitmap")
     // im
     implementation project(":moduleIm")
+    // 飘屏幕
+    implementation project(":model_windscreen")
     //拼音库
     implementation 'com.github.promeg:tinypinyin:2.0.3' // TinyPinyin核心包，约80KB
     //basqqiucladapter

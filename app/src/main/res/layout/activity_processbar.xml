@@ -12,4 +12,51 @@
         android:layout_width="313dp"
         app:processvalue="50"
         android:layout_height="15dp" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/con"
+        android:layout_width="285dp"
+        android:layout_height="316dp"
+        android:background="@drawable/live_red_box_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="16dp"
+            android:text="普通红包"
+            android:textColor="#ffffffff"
+            android:textSize="14dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imgIndicator"
+            android:layout_width="26dp"
+            android:layout_height="5dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/shape_line_bottom"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNormal" />
+
+        <TextView
+            android:id="@+id/tvFollow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="关注红包"
+            android:textColor="#ffffffff"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvNormal"
+            app:layout_constraintLeft_toRightOf="@+id/tvNormal" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

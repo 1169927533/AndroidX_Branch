@@ -22,10 +22,14 @@ import com.uppack.lksmall.baseyu.weight.util.ViewUtil
  */
 
 class ScaleView : androidx.appcompat.widget.AppCompatImageView {
-    var targetViewXLocation = ViewUtil.dip2px(200f) //指定view距离这个view的距离
+    var targetViewXLocation = ViewUtil.dip2px(200f) //指定view距离这个view x的距离
+    var targetViewYLocation = ViewUtil.dip2px(200f) //指定view距离这个view Y的距离
     var targetViewWidth = ViewUtil.dip2px(20f)
+    var targetViewHeight = ViewUtil.dip2px(20f)
 
-    var scaleDistance = 0f// ViewUtil.dip2px(250f)//这个值是根据指定距离动态算出来的
+
+    var scaleDistanceX = 0f// ViewUtil.dip2px(250f)//这个值是根据指定距离动态算出来的
+    var scaleDistanceY = 0f
     var viewWidth = 0
     var viewHeight = 0
     var downX = 0f
@@ -39,9 +43,10 @@ class ScaleView : androidx.appcompat.widget.AppCompatImageView {
         viewWidth = MeasureSpec.getSize(widthMeasureSpec)
         viewHeight = MeasureSpec.getSize(heightMeasureSpec)
 
-        scaleDistance =
+        scaleDistanceX =
             (targetViewXLocation * viewWidth).toFloat() / (viewWidth - targetViewWidth).toFloat()
-
+        scaleDistanceY =
+            (targetViewYLocation * viewHeight).toFloat() / (viewHeight - targetViewHeight).toFloat()
     }
 
 
@@ -53,24 +58,31 @@ class ScaleView : androidx.appcompat.widget.AppCompatImageView {
             MotionEvent.ACTION_MOVE -> {
                 var movx = event.rawX
                 var moveDistance = movx - downX
-                var scale = (scaleDistance - moveDistance) / (scaleDistance).toFloat()
-                this.pivotX = 1.0f
-                this.pivotY = 0.0f
+                var scale = (scaleDistanceX - moveDistance) / (scaleDistanceX).toFloat()
+                Log.i("zjc", "${moveDistance}")
+                this.pivotX = 1f
+                this.pivotY = 1f
                 this.scaleX = scale
                 this.scaleY = scale
                 this.x = moveDistance
-                Log.i("zjc","width = ${this.measuredWidth}  ${this.width} ${this.x}  ")
             }
         }
         return true
     }
 
-    fun animal() {
-        var scaleX = ObjectAnimator.ofFloat(this, "scaleX", 1f, 0.2f)
-        var scaleY = ObjectAnimator.ofFloat(this, "scaleY", 1f, 0.2f)
-        var tranX = ObjectAnimator.ofFloat(this, "translationX", 0f, scaleDistance.toFloat())
-        var animatorSet = AnimatorSet()
-        animatorSet.playTogether(scaleX, scaleY, tranX)
-        animatorSet.start()
+    // 缩放到指定位置
+    fun scaleToTargetLocation() {
+        var scaleAll = ObjectAnimator.ofFloat(this, "scaleAll", 0f, targetViewXLocation.toFloat())
+        scaleAll.duration = 1000
+        scaleAll.start()
+    }
+
+    fun setScaleAll(distance: Float) {
+        var scale = (scaleDistanceX - distance) / (scaleDistanceX).toFloat()
+        this.pivotX = 1f
+        this.pivotY = 0f
+        this.scaleX = scale
+        this.scaleY = scale
+        this.x = distance
     }
 }

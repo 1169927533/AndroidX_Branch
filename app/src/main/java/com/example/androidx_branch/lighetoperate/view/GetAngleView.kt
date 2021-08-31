@@ -1,17 +1,12 @@
-package com.example.androidx_branch.lighetoperate
+package com.example.androidx_branch.lighetoperate.view
 
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
-import android.widget.Toast
 import com.example.a11699.lib_util.dp
-import kotlinx.android.synthetic.main.dialog_fragment_demo.view.*
-import kotlin.math.abs
-import kotlin.math.acos
-import kotlin.math.pow
-import kotlin.math.sqrt
+import com.example.androidx_branch.lighetoperate.helper.AngleGetUtil
 
 /**
  * @Author Yu

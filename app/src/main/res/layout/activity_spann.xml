@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+
     <TextView
         android:id="@+id/tv1"
         android:layout_width="wrap_content"
@@ -20,7 +22,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv1"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv1" />
 
     <TextView
         android:id="@+id/tv3"
@@ -28,18 +30,41 @@
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv2"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv2" />
+
     <TextView
         android:id="@+id/tv4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv3"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv3" />
+
     <LinearLayout
-        android:layout_marginTop="100dp"
-        app:layout_constraintTop_toBottomOf="@+id/tv4"
         android:id="@+id/llcontent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv4" />
+
+    <com.example.androidx_branch.spann.MoveImgView
+        android:id="@+id/moveImageview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/avatar_rengwuxian"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+    </com.example.androidx_branch.spann.MoveImgView>
+    <com.example.androidx_branch.spann.MyAreaViewPager
+        android:id="@+id/myViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </com.example.androidx_branch.spann.MyAreaViewPager>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,6 +19,7 @@
             <option value="$PROJECT_DIR$/aspectj" />
             <option value="$PROJECT_DIR$/compiler" />
             <option value="$PROJECT_DIR$/lib_network" />
+            <option value="$PROJECT_DIR$/model_windscreen" />
             <option value="$PROJECT_DIR$/moduleIm" />
           </set>
         </option>

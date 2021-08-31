@@ -1,6 +1,7 @@
 package com.example.androidx_branch.spann
 
 import android.graphics.Bitmap
+import android.os.Build
 import android.text.*
 import android.text.style.DynamicDrawableSpan
 import android.text.style.ImageSpan
@@ -8,6 +9,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
 import com.example.androidx_branch.R
 import com.uppack.lksmall.baseyu.BaseActivity
 import kotlinx.android.synthetic.main.activity_spann.*
@@ -23,7 +27,11 @@ class SpannActivity : BaseActivity() {
         return R.layout.activity_spann
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun initView() {
+        moveImageview.setOnClickListener {
+            Toast.makeText(this,"wobeidianji l ",Toast.LENGTH_SHORT).show()
+        }
         var html1 =
             Html.fromHtml(
                 "北京市发布霾黄色预警，<font color='#ff0000'><big><big>外出携带好</big></big></font>口罩",
@@ -60,9 +68,17 @@ class SpannActivity : BaseActivity() {
             26, 27, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         )
         tv3.text = string
-
-
         setImageVIew()
+
+
+        val titles: ArrayList<String> = ArrayList()
+        val list: ArrayList<Fragment> = ArrayList()
+        list.add(OneFragment("选项卡1"));
+        list.add(OneFragment("选项卡2"));
+        titles.add("选项卡1");
+        titles.add("选项卡2");
+        myViewPager.adapter = MyAdapter(supportFragmentManager, list, titles)
+        myViewPager.setTargetView(moveImageview)
     }
 
     override fun initViewData() {
